@@ -125,7 +125,8 @@ export default {
   position: relative;
   height: 100vh;
   background-color: #1f3264;
-  // background: url("@/assets/images/bg.jpeg") no-repeat;
+  background: url("../assets/bg.jpeg") no-repeat;
+  background-size: 100% 100%;
   input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px #1f3264 inset !important;
     -webkit-text-fill-color: #fff !important;

@@ -6,7 +6,7 @@
  * @Description: 
 -->
 基于vue2.x+element2.15 的后台项目模板，只提供最基本的项目框架，内部已经配置好css预编译工具、路由、vuex
-# vue-mobile-template
+# vue-pc-template
 
 环境基于 vue: 2.6.11,vue/cli: 4.5.13, node:v12.13.1
 

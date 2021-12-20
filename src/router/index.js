@@ -51,7 +51,7 @@ const router = new VueRouter({
 })
 // 路由守卫，修改页面标题为路由mate设置的值
 router.beforeEach((to, from, next) => {
-  document.title = to?.meta?.title ?? 'vue-mobile-template'
+  document.title = to?.meta?.title ?? 'vue-pc-template'
   next()
 })
 export default router

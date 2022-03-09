@@ -2,7 +2,7 @@
  * @Author: yuyongxing
  * @Date: 2021-10-18 11:40:44
  * @LastEditors: yuyongxing
- * @LastEditTime: 2021-12-18 20:39:13
+ * @LastEditTime: 2022-03-09 10:04:30
  * @Description: 
 -->
 基于vue2.x+element2.15 的后台项目模板，只提供最基本的项目框架，内部已经配置好css预编译工具、路由、vuex
@@ -76,33 +76,3 @@ npm run lint
 
 ```
 
-### 如需按需加载vant
-
-```
-# 安装插件
-npm i babel-plugin-import -D
-```
-```
-// 在.babelrc 中添加配置
-// 注意：webpack 1 无需设置 libraryDirectory
-{
-  "plugins": [
-    ["import", {
-      "libraryName": "vant",
-      "libraryDirectory": "es",
-      "style": true
-    }]
-  ]
-}
-
-// 对于使用 babel7 的用户，可以在 babel.config.js 中配置
-module.exports = {
-  plugins: [
-    ['import', {
-      libraryName: 'vant',
-      libraryDirectory: 'es',
-      style: true
-    }, 'vant']
-  ]
-};
-```

@@ -1,44 +1,45 @@
+<!--
+ * @Author: yuyongxing
+ * @Date: 2021-12-18 19:36:08
+ * @LastEditors: yuyongxing
+ * @LastEditTime: 2022-01-24 22:26:37
+ * @Description:
+-->
 <template>
   <div class="sidebar">
-    <div class="slde-bcak-log">
-      <router-link to="/dashboard">
-        <h3 class="logo">
-          logo
-        </h3>
-      </router-link>
-    </div>
-    <template>
-      <el-menu
-        default-active="2"
-        class="el-menu-vertical-demo"
-        background-color="#545c64"
-        text-color="#fff"
-        active-text-color="#ffd04b"
+    <template v-if="!hasChild(item)">
+      <template slot="title">
+        <i class="el-icon-location" />
+        <span>{{ item.name }}</span>
+      </template>
+      <el-menu-item
+        :index="item.path"
       >
-        <el-submenu
-          v-for="item in menu"
-          :key="item.id"
-          :index="item.id"
+        <router-link
+          class="menu-indent"
+          :to="{path:item.href,query:{keep:'false'}}"
         >
-          <template slot="title">
-            <i class="el-icon-location" />
-            <span>{{ item.name }}</span>
-          </template>
-          <el-menu-item
-            v-for="child in item.subMenus"
-            :key="child.id"
-            class="liDom"
-            :index="child.id"
-          >
-            <router-link
-              class="menu-indent"
-              :to="{path:child.href,query:{keep:'false'}}"
-            >
-              <span>{{ child.name }}</span>
-            </router-link>
-          </el-menu-item>
-        </el-submenu>
-      </el-menu>
+          <span>{{ item.name }}</span>
+        </router-link>
+      </el-menu-item>
+    </template>
+    <template v-else>
+      <el-submenu
+        :index="item.id"
+      >
+        <template slot="title">
+          <i
+            v-if="item.icon"
+            class="el-icon-location"
+          />
+          <span>{{ item.name }}</span>
+        </template>
+        <sidebar-item
+          v-for="child in item.children"
+          :key="child.path"
+          :item="child"
+        />
+      </el-submenu>
     </template>
   </div>
 </template>
@@ -47,8 +48,8 @@ export default {
   name: 'SidebarItem',
   props: {
     // eslint-disable-next-line vue/require-default-prop
-    menu: {
-      type: Array
+    item: {
+      type: Object
     }
   },
   data() {
@@ -67,39 +68,22 @@ export default {
   },
   mounted() { },
   methods: {
-    show() { }
+    hasChild(item) {
+      if (item.children && item.children.length > 0) {
+        return true
+      }
+      return false
+    }
   }
 }
 </script>
 
-<style rel="stylesheet/scss" lang="scss">
-
-.el-menu{
- border: 0px solid #433 !important;
-}
-.slde-bcak-log {
-  width: 100%;
-  height: 50px;
-  background-color: #545c64;
-
-  .logo {
-    text-align: center;
-    display: block;
-    width: 100%;
-    height: 50px;
-    font-size: 20px;
-    color: #eee;
-    line-height: 50px;
-  }
-}
+<style rel="stylesheet/scss" lang="scss" scoped>
 
 .sidebar {
   width: 190px;
   overflow: hidden;
 }
 
-.menu-indent span {
-  padding-left: 32px;
-}
 </style>
 

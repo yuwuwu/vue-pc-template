@@ -2,7 +2,7 @@
  * @Author: yuyongxing
  * @Date: 2021-10-18 11:40:35
  * @LastEditors: yuyongxing
- * @LastEditTime: 2021-12-18 20:28:11
+ * @LastEditTime: 2022-03-09 10:11:06
  * @Description:
  */
 import Vue from 'vue'
@@ -19,8 +19,12 @@ const routes = [
   {
     path: '/',
     name: 'Home',
+    redirect: '/home',
     meta: { title: "主页", keepAlive: true },
-    component: Home
+    component: Layout,
+    children: [
+      { path: 'home', meta: { title: "主页", keepAlive: false }, name: '主页', component: Home }
+    ]
   },
   {
     path: '/login',

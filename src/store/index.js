@@ -60,26 +60,37 @@ export default new Vuex.Store({
       var arr = [
         {
           id: '1',
-          name: '测试1',
+          name: '主页',
+          href: "/",
           icon: 'tech',
-          subMenus: [
-            {
-              id: '12',
-              name: '测试页面1',
-              href: '/test/test'
+          children: [
 
-            }
           ]
         },
         {
           id: '2',
-          name: '测试2',
-          icon: 'tech',
-          subMenus: [
+          name: '一级路由',
+          icon: "c",
+          children: [
             {
               id: '22',
-              name: '测试页面2',
-              href: '/index/index'
+              name: '二级路由1',
+              href: "/test/test",
+              children: [
+              ]
+
+            },
+            {
+              id: '22',
+              name: '二级路由2',
+              children: [
+                {
+                  id: '22',
+                  name: '三级路由',
+                  href: '/index/index'
+
+                }
+              ]
 
             }
           ]

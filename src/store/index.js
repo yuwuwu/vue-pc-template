@@ -60,7 +60,8 @@ export default new Vuex.Store({
       var arr = [
         {
           id: '1',
-          name: '测试1',
+          name: '主页',
+          href: "/",
           icon: 'tech',
           children: [
 
@@ -74,7 +75,7 @@ export default new Vuex.Store({
             {
               id: '22',
               name: '二级路由1',
-              href: "11",
+              href: "/test/test",
               children: [
               ]
 
